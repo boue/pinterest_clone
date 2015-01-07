@@ -1,4 +1,5 @@
 class PinsController < ApplicationController
+  #remember before every action listed below it will find the pin
   before_action :find_pin, only: [:show, :edit, :destroy, :update]
   
   def index
@@ -11,6 +12,20 @@ class PinsController < ApplicationController
 
   def show
 
+  end
+
+  def update
+    if @pin.update(pin_params)
+      redirect_to @pin, notice: "Pin Successfully updated"
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+  end
+
+  def destroy
   end
 
   def create
